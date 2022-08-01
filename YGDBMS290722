@@ -1,0 +1,228 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Diksha             |
+| Dominos            |
+| Mcdonalds          |
+| b1                 |
+| bakery_products    |
+| dominos            |
+| house_values       |
+| information_schema |
+| manga              |
+| movies             |
+| mysql              |
+| performance_schema |
+| sports             |
+| student            |
+| student_database   |
+| student_info       |
+| sys                |
+| vehicle_record     |
+| vrushali           |
+| yash               |
++--------------------+
+20 rows in set (0.01 sec)
+
+mysql> create database  YashG;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use YashG;
+Database changed
+mysql> create table CityHospital(Patient_id int,Patient_name varchar(40),Patient_age float, Disease varchar(20), Doctor varchar(20), Room_no int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into CityHospital values(100,Shriniket Kulkarni,20,Covid19,Dr.Don,10);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Kulkarni,20,Covid19,Dr.Don,10)' at line 1
+mysql> insert into CityHospital values(100,"Shriniket Kulkarni",20,"Covid19","Dr.Don",10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+---------+--------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease | Doctor | Room_no |
++------------+--------------------+-------------+---------+--------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19 | Dr.Don |      10 |
++------------+--------------------+-------------+---------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into CityHospital values(101,"Ashish Bagate",20,"Fever","Dr.Tom",11),(102,"Rushikesk Rathod",20,"Headache","Dr.Suhas",12),(103,"Yash Lomate",20,"Viral","Dr.Shane",13);
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+----------+----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease  | Doctor   | Room_no |
++------------+--------------------+-------------+----------+----------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19  | Dr.Don   |      10 |
+|        101 | Ashish Bagate      |          20 | Fever    | Dr.Tom   |      11 |
+|        102 | Rushikesk Rathod   |          20 | Headache | Dr.Suhas |      12 |
+|        103 | Yash Lomate        |          20 | Viral    | Dr.Shane |      13 |
++------------+--------------------+-------------+----------+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into CityHospital values(104,"Mandar Rane",20,"Depression","Dr.Stress",14),(105,"Nikhil Rane",20,"Viral","Dr.Rajesh",14);
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |
++------------+--------------------+-------------+------------+-----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into CityHospital values(106,"Yash Gokakkar",20,"OPD","Dr.Ruci",15),(107,"Ganesh Wakade",25,"Viral","Dr.Shane",15),(108,"Rutik Gagare",22,"Fever","Dr.Tom",15);
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      15 |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      15 |
++------------+--------------------+-------------+------------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> update CityHospital set Room_no = 20 where Patient_name = "Rutik Gagare";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      15 |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      20 |
++------------+--------------------+-------------+------------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> update CityHospital set Room_no = 19 where Patient_name = "Yash Gokakkar";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      19 |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      20 |
++------------+--------------------+-------------+------------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> alter table CityHospital add Mob_no int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+--------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no | Mob_no |
++------------+--------------------+-------------+------------+-----------+---------+--------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |   NULL |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |   NULL |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |   NULL |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |   NULL |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |   NULL |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |   NULL |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      19 |   NULL |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |   NULL |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      20 |   NULL |
++------------+--------------------+-------------+------------+-----------+---------+--------+
+9 rows in set (0.00 sec)
+
+mysql> update CityHospital set Mob_no = 9999999999 where Patient_id = 100;
+ERROR 1264 (22003): Out of range value for column 'Mob_no' at row 1
+mysql> alter table CityHospital add Mob_no longint;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'longint' at line 1
+mysql> insert into CityHospital values(106,"Yash Gokakkar",20,"OPD","Dr.Ruci",15),(107,"Ganesh Wakade",25,"Viral","Dr.Shane",15),(108,"Rutik Gagare",22,"Fever","Dr.Tom",15);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> alter table CityHospital add Mob_no bigint;
+ERROR 1060 (42S21): Duplicate column name 'Mob_no'
+mysql> delete from CityHospital where Mob_no;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> alter table CityHospital add Mob_no bigint;
+ERROR 1060 (42S21): Duplicate column name 'Mob_no'
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+--------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no | Mob_no |
++------------+--------------------+-------------+------------+-----------+---------+--------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |   NULL |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |   NULL |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |   NULL |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |   NULL |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |   NULL |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |   NULL |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      19 |   NULL |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |   NULL |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      20 |   NULL |
++------------+--------------------+-------------+------------+-----------+---------+--------+
+9 rows in set (0.00 sec)
+
+mysql> delete from CityHospital where Mob_no = NULL;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+--------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no | Mob_no |
++------------+--------------------+-------------+------------+-----------+---------+--------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |   NULL |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |   NULL |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |   NULL |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |   NULL |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |   NULL |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |   NULL |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      19 |   NULL |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |   NULL |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      20 |   NULL |
++------------+--------------------+-------------+------------+-----------+---------+--------+
+9 rows in set (0.00 sec)
+
+mysql> alter table CityHospital drop column Mob_no;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |          20 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |          20 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |          20 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |          20 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |          20 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |          20 | Viral      | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |          20 | OPD        | Dr.Ruci   |      19 |
+|        107 | Ganesh Wakade      |          25 | Viral      | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |          22 | Fever      | Dr.Tom    |      20 |
++------------+--------------------+-------------+------------+-----------+---------+
+9 rows in set (0.00 sec)
+
