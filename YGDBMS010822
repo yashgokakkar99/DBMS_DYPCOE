@@ -1,0 +1,182 @@
+buntu@ubuntu-OptiPlex-5000:~$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.29-0ubuntu0.22.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Diksha             |
+| Dominos            |
+| Mcdonalds          |
+| YashG              |
+| b1                 |
+| bakery_products    |
+| dominos            |
+| house_values       |
+| information_schema |
+| kalpesh            |
+| library            |
+| manga              |
+| movies             |
+| mysql              |
+| performance_schema |
+| sports             |
+| student            |
+| student_database   |
+| student_info       |
+| sys                |
+| vehicle_record     |
+| vrushali           |
+| yash               |
++--------------------+
+23 rows in set (0.00 sec)
+
+mysql> use YashG;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_YashG |
++-----------------+
+| CityHospital    |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |           8 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |           8 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |           8 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |           8 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |           8 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |           8 | Viral      | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |           8 | OPD        | Dr.Ruci   |      19 |
+|        107 | Ganesh Wakade      |           8 | Viral      | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |           8 | Fever      | Dr.Tom    |      20 |
++------------+--------------------+-------------+------------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> update CityHospital set Patient_age = 25 where Disease = "Covid19" and Room_no = 10;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+------------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease    | Doctor    | Room_no |
++------------+--------------------+-------------+------------+-----------+---------+
+|        100 | Shriniket Kulkarni |          25 | Covid19    | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |           8 | Fever      | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |           8 | Headache   | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |           8 | Viral      | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |           8 | Depression | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |           8 | Viral      | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |           8 | OPD        | Dr.Ruci   |      19 |
+|        107 | Ganesh Wakade      |           8 | Viral      | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |           8 | Fever      | Dr.Tom    |      20 |
++------------+--------------------+-------------+------------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> update CityHospital set Disease = "Anxiety" where Room_no = 14 or Patient_name = "Mandar Rane";
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from CityHospital;
++------------+--------------------+-------------+----------+-----------+---------+
+| Patient_id | Patient_name       | Patient_age | Disease  | Doctor    | Room_no |
++------------+--------------------+-------------+----------+-----------+---------+
+|        100 | Shriniket Kulkarni |          25 | Covid19  | Dr.Don    |      10 |
+|        101 | Ashish Bagate      |           8 | Fever    | Dr.Tom    |      11 |
+|        102 | Rushikesk Rathod   |           8 | Headache | Dr.Suhas  |      12 |
+|        103 | Yash Lomate        |           8 | Viral    | Dr.Shane  |      13 |
+|        104 | Mandar Rane        |           8 | Anxiety  | Dr.Stress |      14 |
+|        105 | Nikhil Rane        |           8 | Anxiety  | Dr.Rajesh |      14 |
+|        106 | Yash Gokakkar      |           8 | OPD      | Dr.Ruci   |      19 |
+|        107 | Ganesh Wakade      |           8 | Viral    | Dr.Shane  |      15 |
+|        108 | Rutik Gagare       |           8 | Fever    | Dr.Tom    |      20 |
++------------+--------------------+-------------+----------+-----------+---------+
+9 rows in set (0.00 sec)
+
+mysql> select * from CityHospital where Patient_disease = "Fever" and Patient_id = 108;
+ERROR 1054 (42S22): Unknown column 'Patient_disease' in 'where clause'
+mysql> select * from CityHospital where Disease = "Fever" and Patient_id = 108;
++------------+--------------+-------------+---------+--------+---------+
+| Patient_id | Patient_name | Patient_age | Disease | Doctor | Room_no |
++------------+--------------+-------------+---------+--------+---------+
+|        108 | Rutik Gagare |           8 | Fever   | Dr.Tom |      20 |
++------------+--------------+-------------+---------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from CityHospital where Disease = "Fever" or  Patient_id = 108;
++------------+---------------+-------------+---------+--------+---------+
+| Patient_id | Patient_name  | Patient_age | Disease | Doctor | Room_no |
++------------+---------------+-------------+---------+--------+---------+
+|        101 | Ashish Bagate |           8 | Fever   | Dr.Tom |      11 |
+|        108 | Rutik Gagare  |           8 | Fever   | Dr.Tom |      20 |
++------------+---------------+-------------+---------+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from CityHospital where Disease = "Anxiety" or  Doctor = "Dr.Stress";
++------------+--------------+-------------+---------+-----------+---------+
+| Patient_id | Patient_name | Patient_age | Disease | Doctor    | Room_no |
++------------+--------------+-------------+---------+-----------+---------+
+|        104 | Mandar Rane  |           8 | Anxiety | Dr.Stress |      14 |
+|        105 | Nikhil Rane  |           8 | Anxiety | Dr.Rajesh |      14 |
++------------+--------------+-------------+---------+-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from CityHospital where Disease = "Anxiety" and Doctor = "Dr.Stress";
++------------+--------------+-------------+---------+-----------+---------+
+| Patient_id | Patient_name | Patient_age | Disease | Doctor    | Room_no |
++------------+--------------+-------------+---------+-----------+---------+
+|        104 | Mandar Rane  |           8 | Anxiety | Dr.Stress |      14 |
++------------+--------------+-------------+---------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select Patient_name from CityHospital where Patient_id = 104;
++--------------+
+| Patient_name |
++--------------+
+| Mandar Rane  |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select Patient_name from CityHospital where not Patient_id = 104;
++--------------------+
+| Patient_name       |
++--------------------+
+| Shriniket Kulkarni |
+| Ashish Bagate      |
+| Rushikesk Rathod   |
+| Yash Lomate        |
+| Nikhil Rane        |
+| Yash Gokakkar      |
+| Ganesh Wakade      |
+| Rutik Gagare       |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> select Patient_name from CityHospital where not Patient_age = 25 and Doctor = "Dr.Stress" ;
++--------------+
+| Patient_name |
++--------------+
+| Mandar Rane  |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
